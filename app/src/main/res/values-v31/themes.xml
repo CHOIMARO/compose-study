@@ -3,10 +3,7 @@
 
     <style name="Theme.MySplashScreen" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/black</item>
-        <item name="windowSplashScreenIconBackgroundColor">@color/black</item>
         <item name="postSplashScreenTheme">@style/Theme.Composestudy</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_logo_white</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_logo_white</item>
     </style>
-
-    <style name="Theme.Composestudy" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>

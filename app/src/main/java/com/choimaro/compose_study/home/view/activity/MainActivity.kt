@@ -1,27 +1,26 @@
-package com.choimaro.compose_study
+package com.choimaro.compose_study.home.view.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.choimaro.compose_study.home.HomeScreen
-import com.choimaro.compose_study.login.LoginScreen
+import com.choimaro.compose_study.ScreenType
+import com.choimaro.compose_study.home.view.screen.HomeScreen
+import com.choimaro.compose_study.login.view.screen.LoginScreen
 import com.choimaro.compose_study.ui.theme.ComposestudyTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         enableEdgeToEdge()
         setContent {
             ComposestudyTheme {
@@ -32,16 +31,15 @@ class MainActivity : ComponentActivity() {
 //                    )
 //                }
                 val navController = rememberNavController()
-                val routeAction = remember(navController) { RouteAction(navController) }
                 NavHost(
                     navController = navController,
                     startDestination = ScreenType.LoginPage.route) {
 
                     composable(route = ScreenType.LoginPage.route) {
-                        LoginScreen(routeAction)
+                        LoginScreen(navController)
                     }
                     composable(route = ScreenType.HomePage.route) {
-                        HomeScreen(routeAction)
+                        HomeScreen(navController)
                     }
                 }
             }

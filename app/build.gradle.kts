@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.choimaro.compose_study"
-        minSdk = 28
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -40,6 +40,7 @@ android {
     }
     buildFeatures {
         compose = true
+        dataBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -52,7 +53,9 @@ android {
 }
 
 dependencies {
+    val kotlinVersion: String by project
     val hiltVersion: String by project
+    val splashScreenVersion = "1.0.1"
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -71,6 +74,13 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion")
+    implementation (libs.androidx.appcompat)
+    implementation (libs.androidx.core.ktx)
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    // Splash Screen
+    implementation("androidx.core:core-splashscreen:$splashScreenVersion")
 
     // Okhttp
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
